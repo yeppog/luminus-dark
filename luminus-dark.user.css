@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           LumiNUS Dark
 @namespace      github.com/jeffsieu/luminus-dark
-@version        1.0.7
+@version        1.0.12
 @description    A dark theme for LumiNUS
 @author         Jeff Sieu & Jonathan Lee
 ==/UserStyle== */
@@ -104,6 +104,22 @@
     color: var(--linkColor);
   }
 
+  .btn-default {
+    color: var(--textColor);
+    background-color: var(--activeBackground);
+  }
+
+  .btn-default:hover {
+    color: var(--textColor);
+    background-color: var(--selectedBackground);
+  }
+
+  .btn-default:focus,
+  .btn-default:active {
+    color: var(--textColor) !important;
+    background-color: var(--hoveredBackground) !important;
+  }
+
   /* Green */
   .task.completed .from-now,
   .open {
@@ -118,8 +134,24 @@
   .closed,
   .closed-text,
   .mark-obtained-incorrect,
-  header span.text-danger {
+  header span.text-danger,
+  .danger,
+  [style*="color: #ff0000"] {
     color: var(--red) !important;
+  }
+
+  /* Blue */
+  [style*="color: blue"],
+  nav.pills.vertical .color-blue,
+  ol.breadcrumb a,
+  .alerts .pinned-news .notification-item .notification-info span,
+  .alerts .notifications .notification-item .notification-info span {
+    color: var(--primaryColorLight) !important;
+  }
+
+  /* Black */
+  [style*="color: black"] {
+    color: var(--textColor) !important;
   }
 
   h1,
@@ -139,11 +171,8 @@
     background: var(--background) !important;
   }
 
-  nav.pills.vertical .color-blue,
-  ol.breadcrumb a,
-  .alerts .pinned-news .notification-item .notification-info span,
-  .alerts .notifications .notification-item .notification-info span {
-    color: var(--primaryColorLight) !important;
+  activity-list-item-subsection {
+    background: var(--background) !important;
   }
 
   @media (max-width: 1199px) and (min-width: 768px) {
@@ -162,8 +191,13 @@
     }
   }
 
-  .actual-navs {
+  .actual-navs,
+  .no-categories {
     background: var(--backgroundLight) !important;
+  }
+
+  .no-categories {
+    border-color: var(--dividerColor) !important;
   }
 
   .name.disable-select p.black {
@@ -175,9 +209,17 @@
     color: var(--textColor) !important;
   }
 
-  .meetingPassword icon,
-  icon[name="close"] {
+  .meetingPassword icon {
     filter: invert() brightness(0.75);
+  }
+
+  button.close {
+    opacity: 0.6 !important;
+  }
+  
+  .close:hover,
+  .close:focus {
+    opacity: 0.8 !important;
   }
 
   div.name-container folder-icon {
@@ -526,8 +568,19 @@
     stroke: var(--accentColor) !important;
   }
 
-  table * {
-    border-color: var(--dividerColor) !important;
+  :not(.infolet-box) > table,
+  :not(.infolet-box) > table td,
+  :not(.infolet-box) > table th {
+    color: initial !important;
+    filter: hue-rotate(180deg) invert(1);
+  }
+  
+  :not(.infolet-box) > table [style*="color: black"] {
+    color: initial !important;
+  }
+
+  .infolet .infolet-table table.table thead {
+    background-color: var(--backgroundLight) !important;
   }
 
   /* Pagination and toggle button */
@@ -637,7 +690,6 @@
   header h1,
   header h1 > *,
   h2,
-  h3,
   h4 {
     color: var(--textColor) !important;
   }
@@ -664,11 +716,11 @@
   .announcements section h4,
   .content,
   .files-drop-zone .link,
-  .files-drop-zone a {
+  .files-drop-zone a,
+  .content li,
+  [style*="color: #333333"],
+  .user-name {
     color: var(--textColor) !important;
-  }
-  .content p span {
-    filter: brightness(4.5);
   }
 
   /* Task list */
@@ -829,16 +881,18 @@
     background-color: var(--backgroundLightHalf) !important;
     border-color: var(--dividerColor) !important;
   }
-  .option-container span{
+  .option-container span {
     color: var(--textColor) !important;
-
   }
 
   .danger-message {
     background: var(--background);
   }
 
-  .message-base, .danger-message, .success-message, .warning-message{
+  .message-base,
+  .danger-message,
+  .success-message,
+  .warning-message {
     border: 1px solid var(--dividerColor) !important;
     border-radius: 2px;
   }
